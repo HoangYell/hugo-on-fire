@@ -17,9 +17,6 @@ RUN set -x && \
     mv hugo /usr/bin/hugo && \
     rm -r * && \
     apk del --purge wget && \
-    
-    apt update && \
-    apt install hugo && \
 
     # Install Firebase Tools
     npm install -g firebase-tools@10.9.2
