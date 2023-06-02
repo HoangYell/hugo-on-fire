@@ -17,6 +17,12 @@ RUN set -x && \
     mv hugo /usr/bin/hugo && \
     rm -r * && \
     apk del --purge wget && \
+    
+    # Install snap and Hugo extended
+    apk add snapd && \
+    snap install core && \
+    snap install hugo --channel=extended && \
+
 
     # Install Firebase Tools
     npm install -g firebase-tools@10.9.2
