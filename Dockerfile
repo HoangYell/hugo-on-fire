@@ -18,8 +18,8 @@ RUN set -x && \
     rm -r * && \
     apk del --purge wget && \
     
-    # Install snap and Hugo extended
-    apt install hugo
+    sudo apt update && \
+    sudo apt install hugo && \
 
     # Install Firebase Tools
     npm install -g firebase-tools@10.9.2
