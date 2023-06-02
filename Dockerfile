@@ -11,17 +11,18 @@ RUN set -x && \
     update-ca-certificates && \
     cd /tmp && \
 
-    # Download Hugo
-    wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -O hugo.tar.gz && \
-    tar xzf hugo.tar.gz && \
-    mv hugo /usr/bin/hugo && \
-    rm -r * && \
-    apk del --purge wget && \
-
     # Install Firebase Tools
     npm install -g firebase-tools@10.9.2
 
-RUN docker pull klakegg/hugo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: hugo
+      uses: klakegg/actions-hugo@1.0.0
 
 # Start the building & deploying now
 ADD entrypoint.sh /entrypoint.sh
