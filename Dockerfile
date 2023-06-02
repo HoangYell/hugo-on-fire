@@ -24,6 +24,8 @@ RUN set -x && \
     # Install Firebase Tools
     npm install -g firebase-tools@10.9.2
 
+RUN docker pull klakegg/hugo
+
 # Start the building & deploying now
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["sh", "/entrypoint.sh"]
